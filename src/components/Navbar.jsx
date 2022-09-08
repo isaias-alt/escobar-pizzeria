@@ -3,7 +3,7 @@ import {
   Avatar,
   makeStyles,
   Toolbar,
-  Typography,
+  MenuIcon,
 } from "@material-ui/core";
 import "../../src/index.css";
 import React, { useState } from "react";
@@ -18,6 +18,7 @@ const Navbar = () => {
   const displayMobile = () => {
     return (
       <Toolbar className={classes.toolbar}>
+        <MenuIcon></MenuIcon>
         <Link to="/">
           <img src={logo} alt="EscoBar Pizzeria" className={classes.logo} />
         </Link>
@@ -30,11 +31,9 @@ const Navbar = () => {
     );
   };
   return (
-    <div className={classes.mainDiv}>
-      <AppBar className={classes.root}>
-        {desktop ? displayDesktop() : displayMobile()}
-      </AppBar>
-    </div>
+    <AppBar className={classes.root}>
+      {desktop ? displayDesktop() : displayMobile()}
+    </AppBar>
   );
 };
 
@@ -42,7 +41,7 @@ const useStyle = makeStyles((theme) => ({
   root: {
     position: "sticky",
     top: "0",
-    background: "#f2f2f2",
+    backgroundColor: "#f2f2f2",
     zIndex: 99,
     width: "100vw",
   },
@@ -59,7 +58,6 @@ const useStyle = makeStyles((theme) => ({
   right: {
     display: "flex",
   },
-  avatar: {},
 }));
 
 export default Navbar;
