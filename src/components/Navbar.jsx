@@ -1,24 +1,108 @@
 import {
   AppBar,
   Avatar,
+  Button,
+  Drawer,
+  IconButton,
   makeStyles,
   Toolbar,
-  MenuIcon,
 } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 import "../../src/index.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import SignIn from "../pages/SignIn";
 
 const Navbar = () => {
   const [desktop, setDesktop] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const classes = useStyle();
-  const displayDesktop = () => {};
-  const displayMobile = () => {
+
+  useEffect(() => {
+    const responsiveMobile = () =>
+      window.innerWidth > 625 ? setDesktop(true) : setDesktop(false);
+    responsiveMobile();
+    window.addEventListener("resize", () => responsiveMobile());
+  }, []);
+
+  // Desktop view
+  const displayDesktop = () => {
     return (
       <Toolbar className={classes.toolbar}>
-        <MenuIcon></MenuIcon>
+        <Link to="/">
+          <img src={logo} alt="EscoBar Pizzeria" className={classes.logo} />
+        </Link>
+        <div>
+          <Link to="/" className={classes.buttons}>
+            <Button variant="text">Incio</Button>
+          </Link>
+          <Link to="/menu" className={classes.buttons}>
+            <Button variant="text">Menú</Button>
+          </Link>
+          <Link to="/aboutus" className={classes.buttons}>
+            <Button variant="text">¿Quiénes Somos?</Button>
+          </Link>
+        </div>
+        <Link to="/signin" element={<SignIn />}>
+          <div className={classes.right}>
+            <Avatar className={classes.avatar} />
+          </div>
+        </Link>
+      </Toolbar>
+    );
+  };
+
+  // Mobile view
+  const displayMobile = () => {
+    const handleDrawerOpen = () => {
+      setDrawerOpen(true);
+    };
+    const handleDrawerClose = () => {
+      setDrawerOpen(false);
+    };
+
+    return (
+      <Toolbar className={classes.toolbar}>
+        <IconButton
+          {...{
+            edge: "start",
+            color: "default",
+            "aria-label": "menu",
+            "aria-haspopup": "true",
+            onClick: handleDrawerOpen,
+          }}
+        >
+          <MenuIcon fontSize="large" />
+        </IconButton>
+        {/* Menu Drawer */}
+        <Drawer
+          className={classes.drawer}
+          {...{
+            anchor: "left",
+            open: drawerOpen,
+            onClose: handleDrawerClose,
+          }}
+        >
+          <Link to="/">
+            <img
+              src={logo}
+              alt="EscoBar Pizzeria"
+              className={classes.drawerLogo}
+            />
+          </Link>
+          <div>
+            <Link to="/" className={classes.drawerButtons}>
+              <Button variant="text">Incio</Button>
+            </Link>
+            <Link to="/menu" className={classes.drawerButtons}>
+              <Button variant="text">Menú</Button>
+            </Link>
+            <Link to="/aboutus" className={classes.drawerButtons}>
+              <Button variant="text">¿Quiénes Somos?</Button>
+            </Link>
+          </div>
+        </Drawer>
         <Link to="/">
           <img src={logo} alt="EscoBar Pizzeria" className={classes.logo} />
         </Link>
@@ -55,8 +139,26 @@ const useStyle = makeStyles((theme) => ({
     height: "70px",
     objectFit: "contain",
   },
-  right: {
+  drawerLogo: {
+    width: "150px",
+    height: "150px",
+    objectFit: "contain",
+  },
+  drawerButtons: {
+    margin: theme.spacing(2, 1, 2, 1),
+    padding: theme.spacing(1, 2, 1, 2),
     display: "flex",
+    alignItems: "center",
+    textDecoration: "none",
+  },
+  buttons: {
+    margin: theme.spacing(1, 1, 1, 1),
+    padding: theme.spacing(1, 2, 1, 2),
+    alignItems: "center",
+    textDecoration: "none",
+  },
+  avatar: {
+    margin: theme.spacing(1),
   },
 }));
 

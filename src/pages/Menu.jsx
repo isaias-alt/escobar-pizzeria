@@ -6,6 +6,7 @@ const Menu = () => {
     <div>
       <Navbar />
       <h1>This is the Menu Page</h1>
+      <h3>Rodrigo nde aka guasu</h3>
     </div>
   );
 };
