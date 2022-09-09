@@ -21,7 +21,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const responsiveMobile = () =>
-      window.innerWidth > 625 ? setDesktop(true) : setDesktop(false);
+      window.innerWidth > 810 ? setDesktop(true) : setDesktop(false);
     responsiveMobile();
     window.addEventListener("resize", () => responsiveMobile());
   }, []);
@@ -42,6 +42,9 @@ const Navbar = () => {
           </Link>
           <Link to="/aboutus" className={classes.buttons}>
             <Button variant="text">¿Quiénes Somos?</Button>
+          </Link>
+          <Link to="/admin" className={classes.buttons}>
+            <Button variant="text">Administracion</Button>
           </Link>
         </div>
         <Link to="/signin" element={<SignIn />}>
@@ -100,6 +103,9 @@ const Navbar = () => {
             </Link>
             <Link to="/aboutus" className={classes.drawerButtons}>
               <Button variant="text">¿Quiénes Somos?</Button>
+            </Link>
+            <Link to="/admin" className={classes.drawerButtons}>
+              <Button variant="text">Administracion</Button>
             </Link>
           </div>
         </Drawer>
