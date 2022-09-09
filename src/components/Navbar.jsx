@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
         <div>
           <Link to="/" className={classes.buttons}>
-            <Button variant="text">Incio</Button>
+            <Button variant="text">Inicio</Button>
           </Link>
           <Link to="/menu" className={classes.buttons}>
             <Button variant="text">Menú</Button>
@@ -93,7 +93,7 @@ const Navbar = () => {
           </Link>
           <div>
             <Link to="/" className={classes.drawerButtons}>
-              <Button variant="text">Incio</Button>
+              <Button variant="text">Inicio</Button>
             </Link>
             <Link to="/menu" className={classes.drawerButtons}>
               <Button variant="text">Menú</Button>
