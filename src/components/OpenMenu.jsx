@@ -10,6 +10,7 @@ const OpenMenu = () => {
         <Button
           variant="contained"
           style={{ borderRadius: 50, background: "#CA5C37", color: "#F2F2F2" }}
+          className={classes.button}
         >
           Abrir Menú
         </Button>
@@ -21,6 +22,9 @@ const OpenMenu = () => {
 const useStyle = makeStyles((theme) => ({
   menuButton: {
     textDecoration: "none",
+  },
+  button: {
+    padding: theme.spacing(1, 5, 1, 5),
   },
 }));
 

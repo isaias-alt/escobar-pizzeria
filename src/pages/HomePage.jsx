@@ -8,18 +8,26 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div className={classes.principal}>
-        <h1 className={classes.tituloPrincipal}>Pizzas para un buen momento</h1>
-        <p className={classes.parrafo}>
-          Para aquel trabajador que no dispone de tiempo para prearar la cena,
-          para los amigos y para las familias que desean compartir un buen rato
-          con una rica pizza
-        </p>
-        <OpenMenu className={classes.openMenuButton} />
+      <section className="landing-section">
+        <div className={classes.principal}>
+          <h1 className={classes.tituloPrincipal}>
+            Pizzas para un buen momento
+          </h1>
+          <p className={classes.parrafo}>
+            Para aquel trabajador que no dispone de tiempo para prearar la cena,
+            para los amigos y para las familias que desean compartir un buen
+            rato con una rica pizza
+          </p>
+        </div>
+        <div className={classes.openMenuButton}>
+          <OpenMenu />
+        </div>
+      </section>
+      <section className={classes.cardsSection}>
         <div>
           <Card />
         </div>
-      </div>
+      </section>
     </>
   );
 };
@@ -29,7 +37,6 @@ const useStyle = makeStyles((theme) => ({
     margin: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
   },
   tituloPrincipal: {
     margin: theme.spacing(2, 0, 2, 0),
@@ -37,11 +44,17 @@ const useStyle = makeStyles((theme) => ({
     fontSize: "3rem",
   },
   parrafo: {
-    margin: theme.spacing(2, 0, 2, 0),
+    margin: theme.spacing(2, 0, 1, 0),
     fontSize: "20px",
   },
   openMenuButton: {
-    margin: theme.spacing(3),
+    display: "flex",
+    justifyContent: "center",
+    margin: theme.spacing(0, 0, 4, 0),
+  },
+  cardsSection: {
+    background: "#E3E3E3",
+    height: "50vh",
   },
 }));
 
