@@ -11,33 +11,42 @@ const HomePage = () => {
   const displayMobile = () => {
     return (
       <>
-      <section className="landing-section">
-        <div className={classes.principal}>
-          <h1 className={classes.tituloPrincipal}>
-            Pizzas para un buen momento
-          </h1>
-          <p className={classes.parrafo}>
-            Para aquel trabajador que no dispone de tiempo para prearar la cena,
-            para los amigos y para las familias que desean compartir un buen
-            rato con una rica pizza
-          </p>
-        </div>
-        <div className={classes.openMenuButton}>
-          <OpenMenu />
-        </div>
-      </section>
-      <section className={classes.cardsSection}>
-        <div className={classes.cardContainer}>
-          <Cards />
-          <Cards />
-          <Cards />
-        </div>
-      </section>
+        <section className="landing-section">
+          <div className={classes.principal}>
+            <h1 className={classes.tituloPrincipal}>
+              Pizzas para un buen momento
+            </h1>
+            <p className={classes.parrafo}>
+              Para aquel trabajador que no dispone de tiempo para prearar la
+              cena, para los amigos y para las familias que desean compartir un
+              buen rato con una rica pizza
+            </p>
+          </div>
+          <div className={classes.openMenuButton}>
+            <OpenMenu />
+          </div>
+        </section>
+        <section className={classes.cardsSection}>
+          <h2>Productos destacados</h2>
+          <Grid container spacing={12}>
+            <Grid>
+              <Cards />
+            </Grid>
+            <Grid>
+              <Cards />
+            </Grid>
+            <Grid>
+              <Cards />
+            </Grid>
+          </Grid>
+          <div className={classes.openMenuButton}>
+            <OpenMenu />
+          </div>
+        </section>
       </>
-    )
+    );
   };
   const displayDesktop = () => {};
-
 
   return (
     <>
@@ -71,11 +80,12 @@ const useStyle = makeStyles((theme) => ({
     background: "#E3E3E3",
     height: "50%",
     padding: theme.spacing(3, 3, 3, 3),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   cardContainer: {
-    display: "grid",
-    columnGap: "15px",
-    rowGap: "15px",
     margin: theme.spacing(3, 3, 3, 3),
   },
 }));
