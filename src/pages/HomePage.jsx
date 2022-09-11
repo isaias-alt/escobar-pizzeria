@@ -1,13 +1,16 @@
-import { makeStyles } from "@material-ui/core";
-import Card from "../components/Card";
+import { Grid, makeStyles } from "@material-ui/core";
+import Cards from "../components/Cards";
 import Navbar from "../components/Navbar";
 import OpenMenu from "../components/OpenMenu";
+import React, { useState, useEffect } from "react";
 
 const HomePage = () => {
   const classes = useStyle();
-  return (
-    <>
-      <Navbar />
+  const [desktop, setDesktop] = useState(false);
+
+  const displayMobile = () => {
+    return (
+      <>
       <section className="landing-section">
         <div className={classes.principal}>
           <h1 className={classes.tituloPrincipal}>
@@ -24,10 +27,22 @@ const HomePage = () => {
         </div>
       </section>
       <section className={classes.cardsSection}>
-        <div>
-          <Card />
+        <div className={classes.cardContainer}>
+          <Cards />
+          <Cards />
+          <Cards />
         </div>
       </section>
+      </>
+    )
+  };
+  const displayDesktop = () => {};
+
+
+  return (
+    <>
+      <Navbar />
+      <div>{desktop ? displayDesktop() : displayMobile()}</div>
     </>
   );
 };
@@ -54,7 +69,14 @@ const useStyle = makeStyles((theme) => ({
   },
   cardsSection: {
     background: "#E3E3E3",
-    height: "50vh",
+    height: "50%",
+    padding: theme.spacing(3, 3, 3, 3),
+  },
+  cardContainer: {
+    display: "grid",
+    columnGap: "15px",
+    rowGap: "15px",
+    margin: theme.spacing(3, 3, 3, 3),
   },
 }));
 
